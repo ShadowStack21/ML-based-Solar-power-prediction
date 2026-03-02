@@ -85,8 +85,8 @@ def train_model(data):
     return model
 
 
-st.set_page_config(page_title="AI Solar Optimizer", layout="wide")
-st.title("🌤️ AI Solar Power & Hourly Tracker")
+st.set_page_config(page_title="ML Solar Optimizer", layout="wide")
+st.title("🌤️ ML Solar Power & Hourly Tracker")
 
 data = generate_solar_data()
 model = train_model(data)
@@ -116,7 +116,7 @@ if st.sidebar.button("Predict Current Output"):
     st.sidebar.info(f"Current Output: **{pred:.2f} kW**")
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("🤖 AI Auto-Optimization")
+st.sidebar.subheader("🤖 ML Auto-Optimization")
 if st.sidebar.button("Maximize Power Output"):
     test_angles = np.arange(0, 81, 1)
     df_opt = pd.DataFrame({
@@ -235,3 +235,4 @@ with tab3:
         ax_m.set_xticklabels(monthly_comp.index)
         ax_m.legend()
         st.pyplot(fig_m)
+

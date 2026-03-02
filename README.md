@@ -1,101 +1,128 @@
-# 🌤️ Interactive Seasonal Solar Power Prediction App
+# 🌤️ AI Solar Power & Hourly Tracker Optimizer
 
-An interactive Machine Learning web application built using **Streamlit** that simulates seasonal solar power generation and predicts AC power output using Linear Regression.
+An advanced Machine Learning web application built using **Streamlit** that simulates seasonal solar energy generation and uses **Random Forest Regression** to predict and optimize solar panel tilt angle for maximum AC power output.
 
-This project demonstrates data generation, model training, seasonal analysis, performance evaluation, and real-time prediction in a clean dashboard format.
-
----
-
-## 🚀 Features
-
-- 📅 Seasonal Solar Data Simulation (Winter, Summer, Monsoon, Post-Monsoon)
-- 📊 Weekly, Monthly, and Seasonal Peak Analysis
-- 📈 Actual vs Predicted Power Comparison
-- 🤖 Linear Regression Model Training
-- ⚡ Real-Time AC Power Prediction (User Input)
-- 📉 Dynamic Model Performance Metrics (R², MAE, RMSE)
-- 🗄️ Interactive Data Filtering by Season
-- 💾 Optimized with Streamlit Caching
+This project models realistic seasonal changes, hourly solar movement, and AI-based automatic panel optimization.
 
 ---
 
-## 🧠 Machine Learning Model
+## 🚀 Key Features
 
-**Algorithm Used:** Linear Regression  
-**Target Variable:** AC_POWER  
-**Input Features:**
-- Irradiation (W/m²)
-- Ambient Temperature (°C)
-- Module Temperature (°C)
-
-The model is trained on synthetic solar generation data and dynamically evaluates performance based on user-selected seasonal filters.
+- ☀️ Seasonal Solar Data Simulation (Spring, Summer, Autumn, Winter)
+- ⏱️ Hourly Solar Tracking (6 AM – 6 PM)
+- 🤖 Random Forest Regression Model
+- ⚡ Real-Time Power Prediction
+- 📐 AI-Based Automatic Angle Optimization
+- 📊 Daily Optimal Tilt Tracking Profile
+- 📅 Seasonal Trend Analysis
+- 💾 Streamlit Caching for Performance
 
 ---
 
-## 📊 How the Data is Generated
+## 🎯 Project Objective
 
-- Hourly timestamps for the full year (2023)
+To develop an AI-powered solar panel optimization system that:
+
+- Predicts AC power output using environmental and panel parameters
+- Learns hourly solar movement patterns
+- Automatically determines optimal panel tilt angle
+- Visualizes seasonal and daily solar trends interactively
+
+---
+
+## 📊 Dataset Description
+
+The dataset is synthetically generated for the full year 2023 with hourly timestamps.
+
+### Included Variables:
+
+- DATE_TIME
+- MONTH
+- HOUR
+- WEEK
+- SEASON (Spring, Summer, Autumn, Winter)
+- IRRADIATION (W/m²)
+- AMBIENT_TEMPERATURE (°C)
+- MODULE_TEMPERATURE (°C)
+- TILT_ANGLE (Random panel angle)
+- OPTIMAL_ANGLE (Physics-based ideal angle)
+- AC_POWER (Target variable)
+
+### Data Simulation Includes:
+
 - Seasonal irradiation variation
-- Day/Night sunlight cycle (6 AM – 6 PM)
-- Sinusoidal daylight intensity modeling
-- Temperature variations
+- Day/Night cycle (6 AM – 6 PM)
+- Sinusoidal sunlight intensity pattern
+- Temperature variation
+- Physics-based tilt angle optimization
+- Angle penalty for misalignment
 - Noise injection for realism
-- AC power derived from irradiation with linear relation
 
 ---
 
-## 🖥️ Dashboard Sections
+## 🤖 Machine Learning Model
 
-### 1️⃣ Peak Generation Analysis
-- Weekly peak generation
-- Seasonal peak comparison
-- Monthly peak distribution
+### Model Used:
+Random Forest Regressor
 
-### 2️⃣ Trend Comparison
-- Weekly actual vs predicted averages
-- Monthly peak comparison (grouped bar chart)
+### Why Random Forest?
 
-### 3️⃣ Model Accuracy (Dynamic)
-- R² Score
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- Actual vs Predicted scatter visualization
+- Captures non-linear relationships
+- Handles complex feature interactions
+- More powerful than linear regression
+- Reduces overfitting through ensemble learning
 
-### 4️⃣ Filtered Dataset Viewer
-- Displays raw filtered data based on selected seasons
+### Features Used for Training:
 
----
+- MONTH
+- HOUR
+- IRRADIATION
+- AMBIENT_TEMPERATURE
+- MODULE_TEMPERATURE
+- TILT_ANGLE
 
-## 📦 Installation
+### Target Variable:
 
-Clone the repository:
+- AC_POWER (kW)
 
-```bash
-git clone https://github.com/your-username/solar-power-predictor.git
-cd solar-power-predictor
-```
-
-Install required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Or manually install:
-
-```bash
-pip install streamlit pandas numpy matplotlib seaborn scikit-learn
-```
+Training Strategy:
+- 80% Training Data
+- 20% Testing Data
+- 50 Decision Trees
+- Parallel Processing (n_jobs = -1)
 
 ---
 
-## ▶️ Run the App
+## 🖥️ Dashboard Overview
 
-```bash
-streamlit run App.py
-```
+The Streamlit app contains three main sections:
 
-Then open the local URL shown in the terminal (usually http://localhost:8501).
+### 1️⃣ Daily Solar Tracker Profile
+- AI calculates optimal panel angle for every hour (6 AM – 6 PM)
+- Visualizes automated panel movement
+- Highlights current time position
+
+### 2️⃣ Instant Angle Optimizer
+- Shows power yield curve vs tilt angle
+- Displays current angle performance
+- Identifies optimal tilt for maximum power
+
+### 3️⃣ Seasonal Trends
+- Seasonal peak generation comparison
+- Monthly peak (Actual vs AI Predicted)
+- Demonstrates improved accuracy with hourly tracking
+
+---
+
+## ⚡ AI Auto-Optimization
+
+The system can:
+
+- Predict current power output
+- Test all tilt angles from 0° to 80°
+- Automatically select the angle that maximizes AC power
+
+This simulates an AI-powered dual-axis solar tracker.
 
 ---
 
@@ -107,32 +134,54 @@ Then open the local URL shown in the terminal (usually http://localhost:8501).
 - NumPy
 - Matplotlib
 - Seaborn
-- Scikit-learn
+- Scikit-learn (RandomForestRegressor)
 
 ---
 
-## 🎯 Project Objective
+## ▶️ Installation
 
-To simulate and predict solar AC power generation using environmental variables, while providing an interactive and analytical dashboard for seasonal energy insights.
+Clone the repository:
 
----
+```bash
+git clone https://github.com/your-username/ai-solar-optimizer.git
+cd ai-solar-optimizer
+```
 
-## 📌 Future Improvements
+Install dependencies:
 
-- Add Random Forest / XGBoost models
-- Add real-world solar dataset integration
-- Deploy to Streamlit Cloud
-- Add feature importance visualization
-- Add weather-based simulation enhancements
-
----
-
-## 📄 License
-
-This project is open-source and available for educational and research purposes.
+```bash
+pip install streamlit pandas numpy matplotlib seaborn scikit-learn
+```
 
 ---
 
-## 👨‍💻 Author
+## ▶️ Run the Application
 
-Developed as a Machine Learning and Data Visualization project using Streamlit.
+```bash
+streamlit run app.py
+```
+
+Open the local URL shown in the terminal (usually http://localhost:8501).
+
+---
+
+## 📈 What Makes This Project Advanced?
+
+- Incorporates physics-inspired solar tilt logic
+- Uses ensemble machine learning (Random Forest)
+- Learns hourly solar behavior
+- Performs AI-driven optimization
+- Interactive and real-time system
+
+---
+
+## 🔮 Future Enhancements
+
+- Integration with real solar plant datasets
+- Weather API integration
+- Dual-axis real-time control simulation
+- Deployment on Streamlit Cloud
+- Feature importance visualization
+- Hyperparameter tuning
+
+---
